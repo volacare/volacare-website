@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
+    <title>volacare | Dr. Xiangpeng Liu - Medical Concierge in China</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #1a2c3e;
+            line-height: 1.4;
+        }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 16px 0 12px;
+            border-bottom: 1px solid #eef2f6;
+            gap: 12px;
+        }
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #0b5e7a, #0a4b62);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .logo-sub {
+            font-size: 0.65rem;
+            color: #2c6e8f;
+            font-weight: 500;
+        }
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #2c3e4e;
+            font-weight: 500;
+            font-size: 0.85rem;
+        }
+        .nav-links a:hover {
+            color: #0b5e7a;
+        }
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid #0b5e7a;
+            color: #0b5e7a;
+            padding: 6px 16px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-decoration: none;
+            display: inline-block;
+            transition: 0.2s;
+        }
+        .trust-banner {
+            background: #F4F9FE;
+            border-radius: 24px;
+            padding: 10px 20px;
+            margin: 12px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.8rem;
+        }
+        .hero {
+            padding: 30px 0 20px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 30px;
+        }
+        .hero-content {
+            flex: 1.2;
+        }
+        .hero-badge {
+            background: #e7f0f5;
+            color: #0b5e7a;
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 60px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        .hero-content h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 14px;
+            color: #0a3b4b;
+        }
+        .hero-content p {
+            font-size: 1rem;
+            color: #3a6279;
+            margin-bottom: 20px;
+            max-width: 550px;
+        }
+        .hero-stats {
+            display: flex;
+            gap: 24px;
+            margin-top: 16px;
+            flex-wrap: wrap;
+        }
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #0b5e7a;
+        }
+        .hero-image {
+            flex: 0.8;
+            background: #eef4f8;
+            border-radius: 28px;
+            padding: 24px;
+            text-align: center;
+        }
+        .speed-highlight {
+            background: #eef2fa;
+            border-left: 4px solid #0b5e7a;
+            border-radius: 20px;
+            padding: 14px 20px;
+            margin: 16px 0;
+            font-size: 0.9rem;
+        }
+        .section {
+            padding: 40px 0;
+        }
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #0a3b4b;
+        }
+        .section-sub {
+            color: #4f6f87;
+            margin-bottom: 28px;
+            font-size: 0.9rem;
+        }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+        .info-card {
+            background: #fafdff;
+            border-radius: 24px;
+            padding: 24px 22px;
+            border: 1px solid #e4edf4;
+        }
+        .info-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            color: #0b5e7a;
+        }
+        .price-highlight {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin: 12px 0 4px;
+        }
+        .badge-icon {
+            display: inline-block;
+            background: #0b5e7a10;
+            padding: 4px 10px;
+            border-radius: 40px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            color: #0b5e7a;
+            margin-bottom: 12px;
+        }
+        .fee-table {
+            overflow-x: auto;
+            border-radius: 24px;
+            border: 1px solid #e4edf4;
+            background: white;
+        }
+        .fee-table table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.8rem;
+            min-width: 480px;
+        }
+        .fee-table th, .fee-table td {
+            padding: 10px 12px;
+            text-align: left;
+            border-bottom: 1px solid #eef2f8;
+        }
+        .fee-table th {
+            background-color: #f7fbfe;
+            font-weight: 600;
+        }
+        .hospital-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            background: #0b2a36;
+            color: white;
+            border-radius: 28px;
+            padding: 28px 20px;
+            margin: 24px 0;
+            text-align: center;
+        }
+        .hospital-stat .number {
+            font-size: 1.8rem;
+            font-weight: 800;
+        }
+        .doctor-bio {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 28px;
+            align-items: center;
+            background: #f9fdfe;
+            border-radius: 28px;
+            padding: 28px 24px;
+            margin: 24px 0;
+            border: 1px solid #e2edf4;
+        }
+        .chenzhou-card {
+            background: white;
+            border-radius: 28px;
+            border: 1px solid #e2edf4;
+            overflow: hidden;
+            margin: 24px 0 20px;
+        }
+        .attractions-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding: 20px;
+            background: #eef4f8;
+            border-bottom: 1px solid #e2edf4;
+        }
+        .attraction-btn {
+            background: white;
+            border: 1px solid #0b5e7a;
+            color: #0b5e7a;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .attraction-btn.active {
+            background: #0b5e7a;
+            color: white;
+        }
+        .attraction-btn:hover {
+            background: #eef2fa;
+            transform: translateY(-1px);
+        }
+        .attraction-description {
+            padding: 20px 24px 0 24px;
+            font-size: 0.95rem;
+            color: #2c5a6e;
+            background: white;
+            border-bottom: 1px solid #eef2f8;
+        }
+        .video-container {
+            margin: 0 20px 20px 20px;
+            border-radius: 20px;
+            overflow: hidden;
+            background: #000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .video-container iframe {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            display: block;
+        }
+        .contact-card {
+            background: #fafdff;
+            border-radius: 28px;
+            padding: 32px 28px;
+            border: 1px solid #e2edf4;
+            text-align: center;
+        }
+        .email-display {
+            background: #eef4f8;
+            border-radius: 60px;
+            padding: 10px 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1rem;
+            font-weight: 500;
+            margin: 16px 0 8px;
+            cursor: pointer;
+        }
+        .contact-btn-large {
+            background-color: #0b5e7a;
+            color: white;
+            padding: 12px 30px;
+            font-size: 1rem;
+            border-radius: 50px;
+            border: none;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+            margin: 12px 0;
+            display: inline-block;
+        }
+        .payments-section {
+            background: #f9f9f9;
+            border-radius: 24px;
+            padding: 20px;
+            margin: 24px 0 16px;
+            border: 1px solid #d9e6f0;
+            font-size: 0.85rem;
+        }
+        .disclaimer {
+            font-size: 0.65rem;
+            text-align: center;
+            margin-top: 32px;
+            padding-top: 16px;
+            border-top: 1px solid #e4edf4;
+        }
+        footer {
+            text-align: center;
+            padding: 24px 0 40px;
+            font-size: 0.7rem;
+            color: #6f8da3;
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 16px;
+            }
+            .hero-content h1 {
+                font-size: 1.6rem;
+            }
+            .section-title {
+                font-size: 1.4rem;
+            }
+            .hospital-stats {
+                grid-template-columns: 1fr 1fr;
+                gap: 16px;
+                padding: 20px;
+            }
+            .doctor-bio {
+                flex-direction: column;
+                text-align: center;
+            }
+            .attractions-container {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <nav class="navbar">
+        <div>
+            <div class="logo">volacare</div>
+            <div class="logo-sub">Dr. Xiangpeng Liu · Medical Concierge in China</div>
+        </div>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#services">Services</a>
+            <a href="#fees">Fees</a>
+            <a href="#hospital">Hospital</a>
+            <a href="#travel">Chenzhou</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <div class="trust-banner">
+        <div><span>🏥</span> <strong>Chenzhou First People's Hospital</strong> — <a href="https://www.czhospital.com" target="_blank" style="color:#0b5e7a;">www.czhospital.com</a></div>
+        <div><span>🔍</span> <strong>Verified Physician</strong> — <a href="https://www.liuyishi.com" target="_blank" style="color:#0b5e7a;">www.liuyishi.com</a></div>
+    </div>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">⚡ YOUR PERSONAL DOCTOR IN CHINA</div>
+            <h1>World-class medical care. Surgery in days, not months. At a fraction of the cost.</h1>
+            <p>I'm Dr. Xiangpeng Liu, founder of volacare — a Deputy Chief Physician at Chenzhou First People's Hospital (Top 3A, ISO15189, FTZ). I provide ultra-fast appointments, same-day diagnostics, and expert medical care. You get a doctor, not a guide.</p>
+            <div class="hero-stats">
+                <div class="stat-item"><span class="stat-number">70-80%</span><br>lower costs vs. US/EU</div>
+                <div class="stat-item"><span class="stat-number">57,400+</span><br>surgeries (2023)</div>
+                <div class="stat-item"><span class="stat-number">≤7 days</span><br>surgery wait time</div>
+            </div>
+        </div>
+        <div class="hero-image">
+            <span style="font-size:3.5rem;">👨‍⚕️⚡</span>
+            <p style="margin-top: 8px; font-weight:500;">Dr. Xiangpeng Liu<br>volacare</p>
+        </div>
+    </section>
+
+    <div class="speed-highlight">
+        <p><span>⏱️</span> <strong>Specialist visit:</strong> Within 48h · <span>📅</span> <strong>Surgery:</strong> 3–7 days · <span>🔬</strong> CT/MRI results same day</span> · <span>🌍</span> <strong>ISO15189 results accepted in 70+ countries</strong></p>
+    </div>
+
+    <section id="services" class="section">
+        <h2 class="section-title">How volacare works for you</h2>
+        <div class="grid-2">
+            <div class="info-card">
+                <div class="badge-icon">🏥 COMPLETE MEDICAL CONCIERGE</div>
+                <h3>Full Service Navigation</h3>
+                <p>I match you with the right Chief or Deputy Chief Physician at my hospital, handle all appointments, provide real-time translation, and coordinate every step — from diagnosis to discharge and follow-up. As a licensed physician myself, I ensure you receive the highest quality care.</p>
+                <div class="price-highlight">$195 – $1,490</div>
+                <div class="price-note">Online triage $195 · Full concierge (surgery coordination) $1,490</div>
+            </div>
+            <div class="info-card">
+                <div class="badge-icon">⚡ WHY CHOOSE VOLACARE</div>
+                <h3>A Doctor, Not Just a Translator</h3>
+                <p>Most medical concierge services are run by translators or guides. I am a <strong>Deputy Chief Physician with 15+ years of clinical experience</strong>. I understand your condition, can answer medical questions, and will personally ensure you see the right specialist. If you need surgery in my specialty, I will be your surgeon.</p>
+                <a href="#contact" class="btn-outline" style="margin-top: 12px; display: inline-block;">Request Consultation →</a>
+            </div>
+        </div>
+        <div style="background:#F0F6FA; border-radius: 20px; padding: 18px; margin-top: 20px;">
+            <p>✨ <strong>What makes volacare different?</strong> You're not hiring a translator — you're hiring a Chinese doctor. I navigate the system for you, but I also understand your medical needs from a physician's perspective. That's the volacare difference.</p>
+        </div>
+    </section>
+
+    <section id="fees" class="section">
+        <h2 class="section-title">Transparent medical fees & turnaround times</h2>
+        <div class="section-sub">All hospital fees are paid directly to the medical facility at local Chinese patient rates — no surcharge.</div>
+        <div class="fee-table">
+            <table>
+                <thead>
+                    <tr><th>Service / Procedure</th><th>Price (CNY)</th><th>Approx. USD</th><th>Turnaround / Scheduling</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>🏥 Specialist consultation (Chief/Deputy)</td><td>¥22–31</td><td class="currency">$3–4.30</td><td>Within 48h</td></tr>
+                    <tr><td>🩻 CT plain (one region)</td><td>¥243</td><td class="currency">$33.70</td><td>Same day</td></tr>
+                    <tr><td>🩻 CT contrast (one region)</td><td>¥413.5</td><td class="currency">$57.40</td><td>Same day</td></tr>
+                    <tr><td>🧲 MRI plain (one region)</td><td>¥409</td><td class="currency">$56.80</td><td>Same day</td></tr>
+                    <tr><td>🧲 MRI contrast (one region)</td><td>¥685</td><td class="currency">$95.10</td><td>Same day</td></tr>
+                    <tr><td>🔬 Routine blood + comprehensive panel</td><td>¥120–180</td><td class="currency">$16–25</td><td>2-4 hours</td></tr>
+                    <tr><td>🧫 Pathology (routine biopsy)</td><td>¥300–600</td><td class="currency">$42–83</td><td>~1 week</td></tr>
+                    <tr><td>⚡ Expedited pathology (rush service)</td><td>+¥500–800</td><td class="currency">+$70–110</td><td><strong>As fast as 3 days</strong></td></tr>
+                    <tr><td>🏥 Laparoscopic appendectomy (total)</td><td>¥12,000–18,000</td><td class="currency">$1,665–2,500</td><td>2-3 days after admission</td></tr>
+                    <tr><td>❤️ Cardiac stent placement (all inclusive)</td><td>¥35,000–55,000</td><td class="currency">$4,860–7,640</td><td>Elective ≤7 days</td></tr>
+                    <tr><td>🦵 Total knee replacement (unilateral)</td><td>¥50,000–75,000</td><td class="currency">$6,940–10,420</td><td>5-7 days after pre-op</td></tr>
+                    <tr><td>🧬 PET-CT whole body</td><td>¥6,200</td><td class="currency">$860</td><td>1-2 business days</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="payments-section">
+            <p>💳 <strong>Payment for concierge fee:</strong> After your initial consultation, I will provide a secure payment link (PayPal or bank transfer). Hospital fees are paid directly to Chenzhou First People's Hospital. <br>✉️ Contact me via email to begin.</p>
+        </div>
+    </section>
+
+    <section id="hospital">
+        <div class="hospital-stats">
+            <div class="hospital-stat"><div class="number">1907</div><div>Founded</div></div>
+            <div class="hospital-stat"><div class="number">4,017</div><div>Open beds</div></div>
+            <div class="hospital-stat"><div class="number">2.5M</div><div>Outpatients (2023)</div></div>
+            <div class="hospital-stat"><div class="number">57,400</div><div>Surgeries (2023)</div></div>
+        </div>
+        <div class="doctor-bio">
+            <div><span style="font-size:3rem;">👨‍⚕️</span></div>
+            <div>
+                <h3>Dr. Xiangpeng Liu (volacare)</h3>
+                <p style="color:#0b5e7a; font-weight:600;">Deputy Chief Physician · 15+ years experience · Chenzhou First People's Hospital (Top 3A)</p>
+                <p>I founded volacare to bridge the gap between international patients and China's excellent but complex healthcare system. My hospital provides ISO15189 accreditation (results accepted in 70+ countries) and Free Trade Zone privileges. Official credentials: <a href="https://www.liuyishi.com" target="_blank">www.liuyishi.com</a> | Hospital: <a href="https://www.czhospital.com" target="_blank">www.czhospital.com</a>.</p>
+                <p>📧 Direct contact: <strong id="displayEmail">volacare@volacare.com</strong> (I reply within 24h)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 互动视频板块 + 景点介绍 -->
+    <section id="travel">
+        <div class="chenzhou-card">
+            <div class="attractions-container" id="attractionsContainer"></div>
+            <div class="attraction-description" id="attractionDescription">
+                <!-- 动态介绍将显示在此处 -->
+            </div>
+            <div class="video-container">
+                <iframe id="attractionVideo" src="https://www.youtube.com/embed/soVubxrtaj0?si=45NkkSu7YYabnLCE" title="Dongjiang Lake scenery" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <div style="padding: 0 20px 20px 20px;">
+                <div style="background:#eef4f8; border-radius: 20px; padding: 10px;">
+                    🚗 + 🏨 + 🗺️ <strong>Travel add-on:</strong> From $120/day (private car, English-speaking guide)
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="contact-card">
+            <h2 class="section-title">Start your journey with volacare</h2>
+            <p>You can reach me directly via email or use the button below to open your mail client.</p>
+            <div class="email-display">
+                📧 <strong>volacare@volacare.com</strong>
+                <span style="font-size:0.7rem;">(click to copy)</span>
+            </div>
+            <button id="emailContactBtn" class="contact-btn-large">✉️ Send me an email</button>
+            <p style="font-size:0.8rem; margin-top: 10px;">Your email client will open with my address already filled. I reply within 24 hours.</p>
+            <div class="disclaimer">
+                ⚕️ Medical disclaimer: Dr. Xiangpeng Liu (volacare) provides medical navigation, translation, appointment coordination, and physician-led advocacy. I do not provide remote diagnosis. My concierge fee is separate from hospital charges. For emergencies, dial 120.
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 volacare — Dr. Xiangpeng Liu, Deputy Chief Physician, Chenzhou First People's Hospital</p>
+        <p>🏥 <a href="https://www.czhospital.com" target="_blank">www.czhospital.com</a> · 🌐 <a href="https://www.liuyishi.com" target="_blank">www.liuyishi.com</a></p>
+    </footer>
+</div>
+
+<script>
+    // 景点数据：名称、视频链接、英文介绍
+    const attractions = [
+        {
+            name: "Dongjiang Lake",
+            videoUrl: "https://www.youtube.com/embed/soVubxrtaj0?si=45NkkSu7YYabnLCE",
+            description: "Dongjiang Lake is famous for its early morning mist that creates a surreal, fairy-tale atmosphere. Surrounded by lush green hills, it's a perfect place for a tranquil boat ride or a peaceful walk along the shore. The lake's clear waters are also known for delicious fresh fish."
+        },
+        {
+            name: "Mangshan National Forest",
+            videoUrl: "https://www.youtube.com/embed/ab24P-Gimes?si=FSYoM0U9qN0PGoGj",
+            description: "Mangshan is a vast subtropical rainforest with dramatic waterfalls, deep canyons, and rare wildlife. The well-maintained trails lead you through ancient trees and refreshing streams. It's an ideal destination for nature lovers and those seeking fresh mountain air after treatment."
+        },
+        {
+            name: "Rucheng Hot Springs",
+            videoUrl: "https://www.youtube.com/embed/S0_mJzMSdKQ?si=C6LqeS3lK-wpIwym",
+            description: "Rucheng Hot Springs are natural mineral-rich thermal waters known for their healing properties. The area features outdoor pools surrounded by forest, perfect for soothing muscles and promoting recovery. A popular choice for post-surgery relaxation."
+        },
+        {
+            name: "Most Beautiful Danxia Landform",
+            videoUrl: "https://www.youtube.com/embed/73pRBk935PM?si=DCtpydpaHoi3wa-k",
+            description: "Gaoyiling is a spectacular example of Danxia landform — red sandstone ridges carved by wind and water into dramatic shapes. The hiking paths offer breathtaking views of layered rock formations and emerald-green reservoirs. It's one of the most photographed scenic spots in Chenzhou."
+        }
+    ];
+
+    const attractionsContainer = document.getElementById('attractionsContainer');
+    const videoIframe = document.getElementById('attractionVideo');
+    const descriptionDiv = document.getElementById('attractionDescription');
+
+    // 动态生成按钮，并设置介绍区域
+    attractions.forEach((attraction, index) => {
+        const button = document.createElement('button');
+        button.className = 'attraction-btn';
+        if (index === 0) button.classList.add('active');
+        button.textContent = attraction.name;
+        button.addEventListener('click', () => {
+            // 更新视频
+            videoIframe.src = attraction.videoUrl;
+            // 更新介绍
+            descriptionDiv.innerHTML = `<p>${attraction.description}</p>`;
+            // 更新按钮高亮
+            document.querySelectorAll('.attraction-btn').forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+        });
+        attractionsContainer.appendChild(button);
+    });
+
+    // 初始化显示第一个景点的介绍
+    if (attractions.length > 0) {
+        descriptionDiv.innerHTML = `<p>${attractions[0].description}</p>`;
+    }
+
+    // 确保视频初始加载正确
+    if (videoIframe && videoIframe.src !== attractions[0].videoUrl) {
+        videoIframe.src = attractions[0].videoUrl;
+    }
+
+    // 邮箱复制功能
+    const emailDisplayDiv = document.querySelector('.email-display');
+    const fullEmail = 'volacare@volacare.com';
+    if (emailDisplayDiv) {
+        emailDisplayDiv.addEventListener('click', () => {
+            navigator.clipboard.writeText(fullEmail).then(() => {
+                const tip = emailDisplayDiv.querySelector('span');
+                if (tip) {
+                    const original = tip.innerText;
+                    tip.innerText = '✓ copied!';
+                    setTimeout(() => tip.innerText = original, 1500);
+                }
+            }).catch(() => alert('Please copy manually.'));
+        });
+    }
+
+    // 发送邮件按钮
+    const emailBtn = document.getElementById('emailContactBtn');
+    if (emailBtn) {
+        emailBtn.addEventListener('click', () => {
+            window.location.href = 'mailto:' + fullEmail + '?subject=Medical%20inquiry%20via%20volacare&body=Hello%20Dr.%20Liu%2C%0A%0AI%20am%20interested%20in%20your%20medical%20concierge%20service.%0A%0ABest%20regards%2C%0A%0A%5BYour%20name%5D';
+        });
+    }
+</script>
+</body>
+</html>
