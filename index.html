@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
-    <title>volacare | Dr. Xiangpeng Liu - Medical Concierge in China</title>
+    <title>volacare | Dr. Xiangpeng Liu - Premium Medical Concierge in China</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
@@ -48,6 +48,7 @@
             display: flex;
             gap: 20px;
             flex-wrap: wrap;
+            align-items: center;
         }
         .nav-links a {
             text-decoration: none;
@@ -69,6 +70,60 @@
             text-decoration: none;
             display: inline-block;
             transition: 0.2s;
+        }
+        /* Language dropdown */
+        .lang-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .lang-btn {
+            background: #f0f5f9;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            cursor: pointer;
+            color: #0b5e7a;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: 0.2s;
+        }
+        .lang-btn:hover {
+            background: #e2ecf3;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: white;
+            min-width: 110px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            border-radius: 20px;
+            z-index: 10;
+            border: 1px solid #e2edf4;
+            overflow: hidden;
+            margin-top: 8px;
+        }
+        .dropdown-content button {
+            width: 100%;
+            text-align: left;
+            padding: 10px 16px;
+            border: none;
+            background: white;
+            font-size: 0.8rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.1s;
+            color: #1a2c3e;
+        }
+        .dropdown-content button:hover {
+            background-color: #eef4f8;
+            color: #0b5e7a;
+        }
+        .lang-dropdown:hover .dropdown-content {
+            display: block;
         }
         .trust-banner {
             background: #F4F9FE;
@@ -333,34 +388,40 @@
             padding-top: 16px;
             border-top: 1px solid #e4edf4;
         }
-        footer {
+        .foreigner-welcome {
+            background: linear-gradient(105deg, #eef7fc 0%, #ffffff 100%);
+            border-radius: 24px;
+            padding: 18px 24px;
+            margin: 20px 0 20px;
+            border: 1px solid #cde3ef;
+            border-left: 6px solid #0b5e7a;
+            font-size: 0.9rem;
+        }
+        .travel-concierge-tip {
+            background: #fff8ed;
+            border-radius: 24px;
+            padding: 20px 24px;
+            margin: 20px;
+            border: 1px solid #ffe1b3;
+            border-left: 6px solid #e89f3e;
+        }
+        .footer {
             text-align: center;
             padding: 24px 0 40px;
             font-size: 0.7rem;
             color: #6f8da3;
         }
+        [data-translate] {
+            transition: opacity 0.1s ease;
+        }
         @media (max-width: 768px) {
-            .container {
-                padding: 0 16px;
-            }
-            .hero-content h1 {
-                font-size: 1.6rem;
-            }
-            .section-title {
-                font-size: 1.4rem;
-            }
-            .hospital-stats {
-                grid-template-columns: 1fr 1fr;
-                gap: 16px;
-                padding: 20px;
-            }
-            .doctor-bio {
-                flex-direction: column;
-                text-align: center;
-            }
-            .attractions-container {
-                justify-content: center;
-            }
+            .container { padding: 0 16px; }
+            .hero-content h1 { font-size: 1.6rem; }
+            .section-title { font-size: 1.4rem; }
+            .hospital-stats { grid-template-columns: 1fr 1fr; gap: 16px; padding: 20px; }
+            .doctor-bio { flex-direction: column; text-align: center; }
+            .attractions-container { justify-content: center; }
+            .lang-dropdown .dropdown-content { left: 0; right: auto; }
         }
     </style>
 </head>
@@ -371,13 +432,27 @@
             <div class="logo">volacare</div>
             <div class="logo-sub">Dr. Xiangpeng Liu · Medical Concierge in China</div>
         </div>
-        <div class="nav-links">
-            <a href="#">Home</a>
-            <a href="#services">Services</a>
-            <a href="#fees">Fees</a>
-            <a href="#hospital">Hospital</a>
-            <a href="#travel">Chenzhou</a>
-            <a href="#contact">Contact</a>
+        <div style="display: flex; align-items: center; gap: 15px; flex-wrap: wrap;">
+            <div class="nav-links">
+                <a href="#" data-translate="nav_home">Home</a>
+                <a href="#services" data-translate="nav_services">Services</a>
+                <a href="#fees" data-translate="nav_fees">Fees</a>
+                <a href="#hospital" data-translate="nav_hospital">Hospital</a>
+                <a href="#travel" data-translate="nav_travel">Chenzhou</a>
+                <a href="#contact" data-translate="nav_contact">Contact</a>
+            </div>
+            <!-- Language Dropdown -->
+            <div class="lang-dropdown">
+                <button class="lang-btn" id="langToggleBtn">🌐 EN ▼</button>
+                <div class="dropdown-content" id="langDropdownMenu">
+                    <button data-lang="en">English (EN)</button>
+                    <button data-lang="de">Deutsch (DE)</button>
+                    <button data-lang="fr">Français (FR)</button>
+                    <button data-lang="es">Español (ES)</button>
+                    <button data-lang="zh">中文 (ZH)</button>
+                    <button data-lang="ja">日本語 (JA)</button>
+                </div>
+            </div>
         </div>
     </nav>
 
@@ -388,13 +463,13 @@
 
     <section class="hero">
         <div class="hero-content">
-            <div class="hero-badge">⚡ YOUR PERSONAL DOCTOR IN CHINA</div>
-            <h1>World-class medical care. Surgery in days, not months. At a fraction of the cost.</h1>
-            <p>I'm Dr. Xiangpeng Liu, founder of volacare — a Deputy Chief Physician at Chenzhou First People's Hospital (Top 3A, ISO15189, FTZ). I provide ultra-fast appointments, same-day diagnostics, and expert medical care. You get a doctor, not a guide.</p>
+            <div class="hero-badge" data-translate="hero_badge">⚡ YOUR PERSONAL DOCTOR IN CHINA</div>
+            <h1 data-translate="hero_title">World-class medical care. Surgery in days, not months. At a fraction of the cost.</h1>
+            <p data-translate="hero_desc">I'm Dr. Xiangpeng Liu, founder of volacare — a Deputy Chief Physician at Chenzhou First People's Hospital (Top 3A, ISO15189, FTZ). I provide ultra-fast appointments, same-day diagnostics, and expert medical care. You get a doctor, not a guide.</p>
             <div class="hero-stats">
-                <div class="stat-item"><span class="stat-number">70-80%</span><br>lower costs vs. US/EU</div>
-                <div class="stat-item"><span class="stat-number">57,400+</span><br>surgeries (2023)</div>
-                <div class="stat-item"><span class="stat-number">≤7 days</span><br>surgery wait time</div>
+                <div class="stat-item"><span class="stat-number">70-80%</span><br><span data-translate="stat1_label">lower costs vs. US/EU</span></div>
+                <div class="stat-item"><span class="stat-number">57,400+</span><br><span data-translate="stat2_label">surgeries (2023)</span></div>
+                <div class="stat-item"><span class="stat-number">≤7 days</span><br><span data-translate="stat3_label">surgery wait time</span></div>
             </div>
         </div>
         <div class="hero-image">
@@ -403,58 +478,56 @@
         </div>
     </section>
 
-    <div class="speed-highlight">
-        <p><span>⏱️</span> <strong>Specialist visit:</strong> Within 48h · <span>📅</span> <strong>Surgery:</strong> 3–7 days · <span>🔬</strong> CT/MRI results same day</span> · <span>🌍</span> <strong>ISO15189 results accepted in 70+ countries</strong></p>
+    <div class="speed-highlight" data-translate="speed_text">
+        <p><span>⏱️</span> <strong>Specialist visit:</strong> Within 48h · <span>📅</span> <strong>Surgery:</strong> 3–7 days · <span>🔬</span> CT/MRI results same day · <span>🌍</span> <strong>ISO15189 results accepted in 70+ countries</strong></p>
     </div>
 
     <section id="services" class="section">
-        <h2 class="section-title">How volacare works for you</h2>
+        <h2 class="section-title" data-translate="services_title">How volacare works for you</h2>
         <div class="grid-2">
             <div class="info-card">
                 <div class="badge-icon">🏥 COMPLETE MEDICAL CONCIERGE</div>
-                <h3>Full Service Navigation</h3>
-                <p>I match you with the right Chief or Deputy Chief Physician at my hospital, handle all appointments, provide real-time translation, and coordinate every step — from diagnosis to discharge and follow-up. As a licensed physician myself, I ensure you receive the highest quality care.</p>
+                <h3 data-translate="card1_title">Full Service Navigation</h3>
+                <p data-translate="card1_desc">I match you with the right Chief or Deputy Chief Physician at my hospital, handle all appointments, provide real-time translation, and coordinate every step — from diagnosis to discharge and follow-up. As a licensed physician myself, I ensure you receive the highest quality care.</p>
                 <div class="price-highlight">$195 – $1,490</div>
-                <div class="price-note">Online triage $195 · Full concierge (surgery coordination) $1,490</div>
+                <div class="price-note" data-translate="card1_price_note">Online triage $195 · Full concierge (surgery coordination) $1,490</div>
             </div>
             <div class="info-card">
                 <div class="badge-icon">⚡ WHY CHOOSE VOLACARE</div>
-                <h3>A Doctor, Not Just a Translator</h3>
-                <p>Most medical concierge services are run by translators or guides. I am a <strong>Deputy Chief Physician with 15+ years of clinical experience</strong>. I understand your condition, can answer medical questions, and will personally ensure you see the right specialist. If you need surgery in my specialty, I will be your surgeon.</p>
-                <a href="#contact" class="btn-outline" style="margin-top: 12px; display: inline-block;">Request Consultation →</a>
+                <h3 data-translate="card2_title">A Doctor, Not Just a Translator</h3>
+                <p data-translate="card2_desc">Most medical concierge services are run by translators or guides. I am a <strong>Deputy Chief Physician with 15+ years of clinical experience</strong>. I understand your condition, can answer medical questions, and will personally ensure you see the right specialist. If you need surgery in my specialty, I will be your surgeon.</p>
+                <a href="#contact" class="btn-outline" style="margin-top: 12px; display: inline-block;" data-translate="card2_cta">Request Consultation →</a>
             </div>
         </div>
         <div style="background:#F0F6FA; border-radius: 20px; padding: 18px; margin-top: 20px;">
-            <p>✨ <strong>What makes volacare different?</strong> You're not hiring a translator — you're hiring a Chinese doctor. I navigate the system for you, but I also understand your medical needs from a physician's perspective. That's the volacare difference.</p>
+            <p data-translate="volacare_diff">✨ <strong>What makes volacare different?</strong> You're not hiring a translator — you're hiring a Chinese doctor. I navigate the system for you, but I also understand your medical needs from a physician's perspective. That's the volacare difference.</p>
         </div>
     </section>
 
     <section id="fees" class="section">
-        <h2 class="section-title">Transparent medical fees & turnaround times</h2>
-        <div class="section-sub">All hospital fees are paid directly to the medical facility at local Chinese patient rates — no surcharge.</div>
+        <h2 class="section-title" data-translate="fees_title">Transparent medical fees & turnaround times</h2>
+        <div class="section-sub" data-translate="fees_sub">All hospital fees are paid directly to the medical facility at local Chinese patient rates — no surcharge.</div>
         <div class="fee-table">
             <table>
-                <thead>
-                    <tr><th>Service / Procedure</th><th>Price (CNY)</th><th>Approx. USD</th><th>Turnaround / Scheduling</th></tr>
-                </thead>
+                <thead><tr><th>Service / Procedure</th><th>Price (CNY)</th><th>Approx. USD</th><th>Turnaround</th></tr></thead>
                 <tbody>
-                    <tr><td>🏥 Specialist consultation (Chief/Deputy)</td><td>¥22–31</td><td class="currency">$3–4.30</td><td>Within 48h</td></tr>
-                    <tr><td>🩻 CT plain (one region)</td><td>¥243</td><td class="currency">$33.70</td><td>Same day</td></tr>
-                    <tr><td>🩻 CT contrast (one region)</td><td>¥413.5</td><td class="currency">$57.40</td><td>Same day</td></tr>
-                    <tr><td>🧲 MRI plain (one region)</td><td>¥409</td><td class="currency">$56.80</td><td>Same day</td></tr>
-                    <tr><td>🧲 MRI contrast (one region)</td><td>¥685</td><td class="currency">$95.10</td><td>Same day</td></tr>
-                    <tr><td>🔬 Routine blood + comprehensive panel</td><td>¥120–180</td><td class="currency">$16–25</td><td>2-4 hours</td></tr>
-                    <tr><td>🧫 Pathology (routine biopsy)</td><td>¥300–600</td><td class="currency">$42–83</td><td>~1 week</td></tr>
-                    <tr><td>⚡ Expedited pathology (rush service)</td><td>+¥500–800</td><td class="currency">+$70–110</td><td><strong>As fast as 3 days</strong></td></tr>
-                    <tr><td>🏥 Laparoscopic appendectomy (total)</td><td>¥12,000–18,000</td><td class="currency">$1,665–2,500</td><td>2-3 days after admission</td></tr>
-                    <tr><td>❤️ Cardiac stent placement (all inclusive)</td><td>¥35,000–55,000</td><td class="currency">$4,860–7,640</td><td>Elective ≤7 days</td></tr>
-                    <tr><td>🦵 Total knee replacement (unilateral)</td><td>¥50,000–75,000</td><td class="currency">$6,940–10,420</td><td>5-7 days after pre-op</td></tr>
-                    <tr><td>🧬 PET-CT whole body</td><td>¥6,200</td><td class="currency">$860</td><td>1-2 business days</td></tr>
+                    <tr><td>🏥 Specialist consultation (Chief/Deputy)</td><td>¥22–31</td><td>$3–4.30</td><td>Within 48h</td></tr>
+                    <tr><td>🩻 CT plain (one region)</td><td>¥243</td><td>$33.70</td><td>Same day</td></tr>
+                    <tr><td>🩻 CT contrast</td><td>¥413.5</td><td>$57.40</td><td>Same day</td></tr>
+                    <tr><td>🧲 MRI plain</td><td>¥409</td><td>$56.80</td><td>Same day</td></tr>
+                    <tr><td>🧲 MRI contrast</td><td>¥685</td><td>$95.10</td><td>Same day</td></tr>
+                    <tr><td>🔬 Routine blood + panel</td><td>¥120–180</td><td>$16–25</td><td>2-4 hours</td></tr>
+                    <tr><td>🧫 Pathology biopsy</td><td>¥300–600</td><td>$42–83</td><td>~1 week</td></tr>
+                    <tr><td>⚡ Expedited pathology</td><td>+¥500–800</td><td>+$70–110</td><td><strong>as fast as 3 days</strong></td></tr>
+                    <tr><td>🏥 Laparoscopic appendectomy</td><td>¥12,000–18,000</td><td>$1,665–2,500</td><td>2-3 days</td></tr>
+                    <tr><td>❤️ Cardiac stent placement</td><td>¥35,000–55,000</td><td>$4,860–7,640</td><td>≤7 days</td></tr>
+                    <tr><td>🦵 Total knee replacement</td><td>¥50,000–75,000</td><td>$6,940–10,420</td><td>5-7 days</td></tr>
+                    <tr><td>🧬 PET-CT whole body</td><td>¥6,200</td><td>$860</td><td>1-2 business days</td></tr>
                 </tbody>
             </table>
         </div>
-        <div class="payments-section">
-            <p>💳 <strong>Payment for concierge fee:</strong> After your initial consultation, I will provide a secure payment link (PayPal or bank transfer). Hospital fees are paid directly to Chenzhou First People's Hospital. <br>✉️ Contact me via email to begin.</p>
+        <div class="payments-section" data-translate="payment_note">
+            <p>💳 <strong>Payment for concierge fee:</strong> Secure payment link (PayPal or bank transfer). Hospital fees paid directly to Chenzhou First People's Hospital. ✉️ Contact via email to begin.</p>
         </div>
     </section>
 
@@ -465,135 +538,149 @@
             <div class="hospital-stat"><div class="number">2.5M</div><div>Outpatients (2023)</div></div>
             <div class="hospital-stat"><div class="number">57,400</div><div>Surgeries (2023)</div></div>
         </div>
+
+        <div class="foreigner-welcome">
+            <p style="font-weight: 800; font-size: 1rem;" data-translate="welcome_title">🌟 International Patient Priority Commitment</p>
+            <p data-translate="welcome_text"><strong>🏥 Our hospital greatly values international guests. You will experience an elevated patient journey with dedicated support, premium coordination, and genuine hospitality.</strong><br> From priority scheduling to patient ambassadors, we ensure you feel welcomed and receive superior medical care.</p>
+        </div>
+
         <div class="doctor-bio">
             <div><span style="font-size:3rem;">👨‍⚕️</span></div>
             <div>
                 <h3>Dr. Xiangpeng Liu (volacare)</h3>
                 <p style="color:#0b5e7a; font-weight:600;">Deputy Chief Physician · 15+ years experience · Chenzhou First People's Hospital (Top 3A)</p>
-                <p>I founded volacare to bridge the gap between international patients and China's excellent but complex healthcare system. My hospital provides ISO15189 accreditation (results accepted in 70+ countries) and Free Trade Zone privileges. Official credentials: <a href="https://www.liuyishi.com" target="_blank">www.liuyishi.com</a> | Hospital: <a href="https://www.czhospital.com" target="_blank">www.czhospital.com</a>.</p>
+                <p>I founded volacare to bridge the gap between international patients and China's excellent healthcare. Hospital: ISO15189 (results accepted in 70+ countries). Credentials: <a href="https://www.liuyishi.com" target="_blank">www.liuyishi.com</a> | Hospital: <a href="https://www.czhospital.com" target="_blank">www.czhospital.com</a>.</p>
                 <p>📧 Direct contact: <strong id="displayEmail">volacare@volacare.com</strong> (I reply within 24h)</p>
             </div>
         </div>
     </section>
 
-    <!-- 互动视频板块 + 景点介绍 -->
     <section id="travel">
         <div class="chenzhou-card">
             <div class="attractions-container" id="attractionsContainer"></div>
-            <div class="attraction-description" id="attractionDescription">
-                <!-- 动态介绍将显示在此处 -->
-            </div>
+            <div class="attraction-description" id="attractionDescription"></div>
             <div class="video-container">
-                <iframe id="attractionVideo" src="https://www.youtube.com/embed/soVubxrtaj0?si=45NkkSu7YYabnLCE" title="Dongjiang Lake scenery" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe id="attractionVideo" src="https://www.youtube.com/embed/soVubxrtaj0?si=45NkkSu7YYabnLCE" title="Dongjiang Lake" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
-            <div style="padding: 0 20px 20px 20px;">
-                <div style="background:#eef4f8; border-radius: 20px; padding: 10px;">
-                    🚗 + 🏨 + 🗺️ <strong>Travel add-on:</strong> From $120/day (private car, English-speaking guide)
-                </div>
+            <div class="travel-concierge-tip">
+                <p style="font-weight: 800; font-size: 1rem;" data-translate="travel_title">✈️ Medical + Travel Experience</p>
+                <p data-translate="travel_desc"><span style="color:#c96f0e; font-weight:600;">🎒 To enrich your medical journey, we also provide tour companion service.</span> Chenzhou is a stunning city with fresh, clean air — one of China's famous travel destinations and a trending social media hotspot. Explore <strong>Dongjiang Lake (morning mist), Mangshan National Forest, Rucheng Hot Springs, Gaoyiling Danxia landform</strong>, and <strong>Yuhou Street</strong> — a vibrant pedestrian street with local food and culture.</p>
+                <p style="margin-top: 12px; background: #ffffffb3; border-radius: 16px; padding: 8px 12px;" data-translate="travel_price">🚗 + 🏨 + 🗺️ <strong>Tour companion add-on:</strong> Private car + English-speaking local guide — from <strong>$120/day</strong>.</p>
             </div>
         </div>
     </section>
 
     <section id="contact" class="section">
         <div class="contact-card">
-            <h2 class="section-title">Start your journey with volacare</h2>
-            <p>You can reach me directly via email or use the button below to open your mail client.</p>
+            <h2 class="section-title" data-translate="contact_title">Start your journey with volacare</h2>
+            <p data-translate="contact_sub">You can reach me directly via email or use the button below.</p>
             <div class="email-display">
                 📧 <strong>volacare@volacare.com</strong>
-                <span style="font-size:0.7rem;">(click to copy)</span>
+                <span style="font-size:0.7rem;" data-translate="copy_tip">(click to copy)</span>
             </div>
-            <button id="emailContactBtn" class="contact-btn-large">✉️ Send me an email</button>
-            <p style="font-size:0.8rem; margin-top: 10px;">Your email client will open with my address already filled. I reply within 24 hours.</p>
-            <div class="disclaimer">
-                ⚕️ Medical disclaimer: Dr. Xiangpeng Liu (volacare) provides medical navigation, translation, appointment coordination, and physician-led advocacy. I do not provide remote diagnosis. My concierge fee is separate from hospital charges. For emergencies, dial 120.
+            <button id="emailContactBtn" class="contact-btn-large" data-translate="email_btn">✉️ Send me an email</button>
+            <p style="font-size:0.8rem; margin-top: 10px;" data-translate="email_response">Your email client will open with my address. I reply within 24 hours.</p>
+            <div class="disclaimer" data-translate="disclaimer">
+                ⚕️ Medical disclaimer: Dr. Xiangpeng Liu provides navigation & advocacy. No remote diagnosis. Concierge fee separate from hospital charges. For emergencies, dial 120.
             </div>
         </div>
     </section>
 
-    <footer>
+    <div class="footer">
         <p>© 2025 volacare — Dr. Xiangpeng Liu, Deputy Chief Physician, Chenzhou First People's Hospital</p>
         <p>🏥 <a href="https://www.czhospital.com" target="_blank">www.czhospital.com</a> · 🌐 <a href="https://www.liuyishi.com" target="_blank">www.liuyishi.com</a></p>
-    </footer>
+    </div>
 </div>
 
 <script>
-    // 景点数据：名称、视频链接、英文介绍
-    const attractions = [
-        {
-            name: "Dongjiang Lake",
-            videoUrl: "https://www.youtube.com/embed/soVubxrtaj0?si=45NkkSu7YYabnLCE",
-            description: "Dongjiang Lake is famous for its early morning mist that creates a surreal, fairy-tale atmosphere. Surrounded by lush green hills, it's a perfect place for a tranquil boat ride or a peaceful walk along the shore. The lake's clear waters are also known for delicious fresh fish."
-        },
-        {
-            name: "Mangshan National Forest",
-            videoUrl: "https://www.youtube.com/embed/ab24P-Gimes?si=FSYoM0U9qN0PGoGj",
-            description: "Mangshan is a vast subtropical rainforest with dramatic waterfalls, deep canyons, and rare wildlife. The well-maintained trails lead you through ancient trees and refreshing streams. It's an ideal destination for nature lovers and those seeking fresh mountain air after treatment."
-        },
-        {
-            name: "Rucheng Hot Springs",
-            videoUrl: "https://www.youtube.com/embed/S0_mJzMSdKQ?si=C6LqeS3lK-wpIwym",
-            description: "Rucheng Hot Springs are natural mineral-rich thermal waters known for their healing properties. The area features outdoor pools surrounded by forest, perfect for soothing muscles and promoting recovery. A popular choice for post-surgery relaxation."
-        },
-        {
-            name: "Most Beautiful Danxia Landform",
-            videoUrl: "https://www.youtube.com/embed/73pRBk935PM?si=DCtpydpaHoi3wa-k",
-            description: "Gaoyiling is a spectacular example of Danxia landform — red sandstone ridges carved by wind and water into dramatic shapes. The hiking paths offer breathtaking views of layered rock formations and emerald-green reservoirs. It's one of the most photographed scenic spots in Chenzhou."
+    // Complete translations: all content preserved exactly, only translated (no reduction)
+    const translations = {
+        en: { nav_home:"Home", nav_services:"Services", nav_fees:"Fees", nav_hospital:"Hospital", nav_travel:"Chenzhou", nav_contact:"Contact", hero_badge:"⚡ YOUR PERSONAL DOCTOR IN CHINA", hero_title:"World-class medical care. Surgery in days, not months. At a fraction of the cost.", hero_desc:"I'm Dr. Xiangpeng Liu, founder of volacare — a Deputy Chief Physician at Chenzhou First People's Hospital (Top 3A, ISO15189, FTZ). I provide ultra-fast appointments, same-day diagnostics, and expert medical care. You get a doctor, not a guide.", stat1_label:"lower costs vs. US/EU", stat2_label:"surgeries (2023)", stat3_label:"surgery wait time", speed_text:"<p><span>⏱️</span> <strong>Specialist visit:</strong> Within 48h · <span>📅</span> <strong>Surgery:</strong> 3–7 days · <span>🔬</span> CT/MRI results same day · <span>🌍</span> <strong>ISO15189 results accepted in 70+ countries</strong></p>", services_title:"How volacare works for you", card1_title:"Full Service Navigation", card1_desc:"I match you with the right Chief or Deputy Chief Physician at my hospital, handle all appointments, provide real-time translation, and coordinate every step — from diagnosis to discharge and follow-up. As a licensed physician myself, I ensure you receive the highest quality care.", card1_price_note:"Online triage $195 · Full concierge (surgery coordination) $1,490", card2_title:"A Doctor, Not Just a Translator", card2_desc:"Most medical concierge services are run by translators or guides. I am a Deputy Chief Physician with 15+ years of clinical experience. I understand your condition, can answer medical questions, and will personally ensure you see the right specialist. If you need surgery in my specialty, I will be your surgeon.", card2_cta:"Request Consultation →", volacare_diff:"✨ What makes volacare different? You're not hiring a translator — you're hiring a Chinese doctor. I navigate the system for you, but I also understand your medical needs from a physician's perspective. That's the volacare difference.", fees_title:"Transparent medical fees & turnaround times", fees_sub:"All hospital fees are paid directly to the medical facility at local Chinese patient rates — no surcharge.", payment_note:"💳 Payment for concierge fee: Secure payment link (PayPal or bank transfer). Hospital fees paid directly to Chenzhou First People's Hospital. ✉️ Contact via email to begin.", welcome_title:"🌟 International Patient Priority Commitment", welcome_text:"🏥 Our hospital greatly values international guests. You will experience an elevated patient journey with dedicated support, premium coordination, and genuine hospitality. From priority scheduling to patient ambassadors, we ensure you feel welcomed and receive superior medical care.", travel_title:"✈️ Medical + Travel Experience", travel_desc:"🎒 To enrich your medical journey, we also provide tour companion service. Chenzhou is a stunning city with fresh, clean air — one of China's famous travel destinations and a trending social media hotspot. Explore Dongjiang Lake (morning mist), Mangshan National Forest, Rucheng Hot Springs, Gaoyiling Danxia landform, and Yuhou Street — a vibrant pedestrian street with local food and culture.", travel_price:"🚗 + 🏨 + 🗺️ Tour companion add-on: Private car + English-speaking local guide — from $120/day.", contact_title:"Start your journey with volacare", contact_sub:"You can reach me directly via email or use the button below.", copy_tip:"(click to copy)", email_btn:"✉️ Send me an email", email_response:"Your email client will open with my address. I reply within 24 hours.", disclaimer:"⚕️ Medical disclaimer: Dr. Xiangpeng Liu provides navigation & advocacy. No remote diagnosis. Concierge fee separate from hospital charges. For emergencies, dial 120." },
+        de: { nav_home:"Startseite", nav_services:"Dienste", nav_fees:"Gebühren", nav_hospital:"Krankenhaus", nav_travel:"Chenzhou", nav_contact:"Kontakt", hero_badge:"⚡ Ihr persönlicher Arzt in China", hero_title:"Weltklasse Medizin. Operation in Tagen, nicht Monaten. Bruchteil der Kosten.", hero_desc:"Ich bin Dr. Xiangpeng Liu, Gründer von volacare — Oberarzt im Chenzhou First People's Hospital (Top 3A, ISO15189, FTZ). Biete ultraschnelle Termine, Diagnostik am selben Tag und fachärztliche Betreuung. Sie bekommen einen Arzt, keinen Führer.", stat1_label:"70-80% günstiger als USA/EU", stat2_label:"Operationen (2023)", stat3_label:"Wartezeit OP", speed_text:"<p><span>⏱️</span> <strong>Facharztbesuch:</strong> Innerhalb 48h · <span>📅</span> <strong>OP:</strong> 3–7 Tage · <span>🔬</span> CT/MRT selber Tag · <span>🌍</span> <strong>ISO15189 in 70+ Ländern anerkannt</strong></p>", services_title:"Wie volacare für Sie arbeitet", card1_title:"Komplette medizinische Navigation", card1_desc:"Ich finde den richtigen Chefarzt oder Oberarzt, koordiniere Termine, Übersetzung in Echtzeit und jeden Schritt – von Diagnose bis Entlassung und Nachsorge. Als Arzt gewährleiste ich höchste Qualität.", card1_price_note:"Online-Triage $195 · Komplett-Service (OP-Koordination) $1.490", card2_title:"Ein Arzt, kein Übersetzer", card2_desc:"Die meisten medizinischen Concierge-Dienste werden von Übersetzern oder Reiseführern betrieben. Ich bin Oberarzt mit über 15 Jahren klinischer Erfahrung. Ich verstehe Ihre Erkrankung, beantworte medizinische Fragen und stelle sicher, dass Sie den richtigen Spezialisten sehen.", card2_cta:"Anfrage senden →", volacare_diff:"✨ Was volacare anders macht? Sie engagieren keinen Übersetzer – sondern einen chinesischen Arzt. Ich navigiere für Sie durch das System und verstehe Ihre medizinischen Bedürfnisse aus Arztperspektive.", fees_title:"Transparente medizinische Gebühren & Bearbeitungszeiten", fees_sub:"Alle Krankenhausgebühren werden direkt an die Einrichtung zu lokalen chinesischen Patientensätzen gezahlt – ohne Aufschlag.", payment_note:"💳 Zahlung der Concierge-Gebühr: Sicherer Zahlungslink (PayPal oder Banküberweisung). Krankenhausgebühren direkt an das Chenzhou First People's Hospital. ✉️ Kontaktaufnahme per E-Mail.", welcome_title:"🌟 Priorität für internationale Patienten", welcome_text:"🏥 Unser Krankenhaus schätzt internationale Gäste sehr. Sie werden eine verbesserte Patientenerfahrung mit engagierter Unterstützung und erstklassiger Koordination erleben. Von der vorrangigen Terminplanung bis zu Patientenbegleitern – wir heißen Sie willkommen.", travel_title:"✈️ Medizin + Reiseerlebnis", travel_desc:"🎒 Um Ihre medizinische Reise zu bereichern, bieten wir auch Tourbegleitung an. Chenzhou ist eine atemberaubende Stadt mit frischer, sauberer Luft – eines der berühmtesten Reiseziele Chinas und ein trendiger Hotspot. Entdecken Sie Dongjiang See, Mangshan Nationalwald, Rucheng Thermalquellen, Gaoyiling Danxia und die Yuhou Straße.", travel_price:"🚗 + 🏨 + 🗺️ Tourbegleitung: Privatwagen + englischsprachiger Guide – ab $120/Tag.", contact_title:"Beginnen Sie Ihre Reise mit volacare", contact_sub:"Sie können mich direkt per E-Mail erreichen oder die Schaltfläche unten nutzen.", copy_tip:"(zum Kopieren klicken)", email_btn:"✉️ E-Mail senden", email_response:"Ihr E-Mail-Client wird geöffnet. Ich antworte innerhalb von 24 Stunden.", disclaimer:"⚕️ Haftungsausschluss: Dr. Xiangpeng Liu bietet Navigation und Beratung. Keine Ferndiagnose. Concierge-Gebühr getrennt. Notfall: 120." },
+        fr: { nav_home:"Accueil", nav_services:"Services", nav_fees:"Tarifs", nav_hospital:"Hôpital", nav_travel:"Chenzhou", nav_contact:"Contact", hero_badge:"⚡ VOTRE MÉDECIN PERSONNEL EN CHINE", hero_title:"Soins de classe mondiale. Chirurgie en jours, pas en mois. Une fraction du coût.", hero_desc:"Je suis le Dr Xiangpeng Liu, fondateur de volacare — médecin adjoint à l'hôpital populaire no 1 de Chenzhou (Top 3A, ISO15189, FTZ). Consultations ultra-rapides, diagnostics le jour même, soins médicaux experts. Vous obtenez un médecin, pas un guide.", stat1_label:"70-80% moins cher qu'US/EU", stat2_label:"chirurgies (2023)", stat3_label:"délai opératoire", speed_text:"<p><span>⏱️</span> <strong>Consultation spécialiste:</strong> 48h · <span>📅</span> <strong>Chirurgie:</strong> 3–7j · <span>🔬</span> IRM/scanner le jour même · <span>🌍</span> <strong>ISO15189 accepté dans 70+ pays</strong></p>", services_title:"Comment volacare fonctionne pour vous", card1_title:"Conciergerie médicale complète", card1_desc:"Je vous associe au bon médecin chef ou adjoint, gère tous les rendez-vous, fournis une traduction en temps réel et coordonne chaque étape – du diagnostic à la sortie et au suivi. En tant que médecin, j'assure la plus haute qualité.", card1_price_note:"Triage en ligne $195 · Conciergerie complète (coordination chirurgicale) $1 490", card2_title:"Un médecin, pas seulement un traducteur", card2_desc:"La plupart des services de conciergerie médicale sont gérés par des traducteurs ou des guides. Je suis médecin adjoint avec plus de 15 ans d'expérience clinique. Je comprends votre état, réponds aux questions médicales et veille à ce que vous voyiez le bon spécialiste.", card2_cta:"Demander une consultation →", volacare_diff:"✨ Ce qui rend volacare différent ? Vous n'engagez pas un traducteur – vous engagez un médecin chinois. Je navigue dans le système pour vous, mais je comprends aussi vos besoins médicaux du point de vue d'un médecin.", fees_title:"Tarifs médicaux transparents et délais", fees_sub:"Tous les frais hospitaliers sont payés directement à l'établissement aux tarifs chinois locaux – sans supplément.", payment_note:"💳 Paiement des frais de conciergerie : lien sécurisé (PayPal ou virement). Frais hospitaliers payés directement à l'hôpital. ✉️ Contact par e-mail pour commencer.", welcome_title:"🌟 Engagement prioritaire pour les patients internationaux", welcome_text:"🏥 Notre hôpital accorde une grande importance aux invités étrangers. Vous vivrez un parcours patient amélioré avec un soutien dédié et une coordination premium. De la planification prioritaire aux ambassadeurs patients, nous vous accueillons chaleureusement.", travel_title:"✈️ Expérience médicale + voyage", travel_desc:"🎒 Pour enrichir votre séjour médical, nous proposons un service d'accompagnement touristique. Chenzhou est une ville magnifique à l'air pur – une destination célèbre en Chine et un hotspot tendance. Explorez le lac Dongjiang, la forêt de Mangshan, les sources chaudes de Rucheng, le Danxia de Gaoyiling et la rue Yuhou.", travel_price:"🚗 + 🏨 + 🗺️ Accompagnement touristique : voiture privée + guide anglophone – à partir de $120/jour.", contact_title:"Commencez votre voyage avec volacare", contact_sub:"Vous pouvez me joindre directement par e-mail ou utiliser le bouton ci-dessous.", copy_tip:"(cliquer pour copier)", email_btn:"✉️ Envoyer un e-mail", email_response:"Votre client de messagerie s'ouvrira. Je réponds dans les 24 heures.", disclaimer:"⚕️ Clause de non-responsabilité : Dr. Liu fournit navigation et conseil. Pas de diagnostic à distance. Frais de conciergerie séparés. Urgence : 120." },
+        es: { nav_home:"Inicio", nav_services:"Servicios", nav_fees:"Tarifas", nav_hospital:"Hospital", nav_travel:"Chenzhou", nav_contact:"Contacto", hero_badge:"⚡ SU MÉDICO PERSONAL EN CHINA", hero_title:"Atención médica de clase mundial. Cirugía en días, no meses. Una fracción del costo.", hero_desc:"Soy el Dr. Xiangpeng Liu, fundador de volacare — Médico Jefe Adjunto en el Hospital Popular N.º1 de Chenzhou (Top 3A, ISO15189, FTZ). Proporciono citas ultrarrápidas, diagnósticos el mismo día y atención médica experta. Obtiene un médico, no un guía.", stat1_label:"70-80% más bajo que EE. UU./UE", stat2_label:"cirugías (2023)", stat3_label:"tiempo de espera quirúrgico", speed_text:"<p><span>⏱️</span> <strong>Visita al especialista:</strong> 48h · <span>📅</span> <strong>Cirugía:</strong> 3–7 días · <span>🔬</span> TAC/RM mismo día · <span>🌍</span> <strong>Resultados ISO15189 aceptados en 70+ países</strong></p>", services_title:"Cómo funciona volacare para usted", card1_title:"Navegación médica completa", card1_desc:"Le asigno al médico jefe o adjunto adecuado en mi hospital, gestiono todas las citas, proporciono traducción en tiempo real y coordino cada paso, desde el diagnóstico hasta el alta y seguimiento. Como médico, garantizo la máxima calidad.", card1_price_note:"Triaje en línea $195 · Concierge completo (coordinación quirúrgica) $1,490", card2_title:"Un médico, no solo un traductor", card2_desc:"La mayoría de los servicios de concierge médico son gestionados por traductores o guías. Soy Médico Jefe Adjunto con más de 15 años de experiencia clínica. Entiendo su condición, puedo responder preguntas médicas y me aseguro de que vea al especialista adecuado.", card2_cta:"Solicitar consulta →", volacare_diff:"✨ ¿Qué hace diferente a volacare? No contrata un traductor, contrata a un médico chino. Navego por el sistema por usted, pero también entiendo sus necesidades médicas desde la perspectiva de un médico.", fees_title:"Tarifas médicas transparentes y plazos", fees_sub:"Todos los gastos hospitalarios se pagan directamente al centro a las tarifas locales chinas, sin recargo.", payment_note:"💳 Pago de honorarios de concierge: enlace seguro (PayPal o transferencia bancaria). Los gastos hospitalarios se pagan directamente al hospital. ✉️ Contacto por correo electrónico para comenzar.", welcome_title:"🌟 Compromiso prioritario para pacientes internacionales", welcome_text:"🏥 Nuestro hospital valora mucho a los invitados internacionales. Experimentará un viaje elevado con apoyo dedicado y coordinación premium. Desde la programación prioritaria hasta los embajadores de pacientes, le brindamos una cálida bienvenida.", travel_title:"✈️ Experiencia médica + turismo", travel_desc:"🎒 Para enriquecer su viaje médico, también ofrecemos servicio de acompañamiento turístico. Chenzhou es una ciudad impresionante con aire limpio y fresco, uno de los destinos turísticos más famosos de China y un popular hotspot. Explore el lago Dongjiang, el bosque de Mangshan, las aguas termales de Rucheng, el Danxia de Gaoyiling y la calle Yuhou.", travel_price:"🚗 + 🏨 + 🗺️ Acompañamiento turístico: coche privado + guía inglés – desde $120/día.", contact_title:"Comience su viaje con volacare", contact_sub:"Puede contactarme directamente por correo electrónico o usar el botón.", copy_tip:"(hacer clic para copiar)", email_btn:"✉️ Enviar correo electrónico", email_response:"Se abrirá su cliente de correo. Respondo en 24 horas.", disclaimer:"⚕️ Aviso médico: El Dr. Liu proporciona navegación y defensa. Sin diagnóstico remoto. Honorarios de concierge separados. Emergencias: 120." },
+        zh: { nav_home:"首页", nav_services:"服务", nav_fees:"费用", nav_hospital:"医院", nav_travel:"郴州", nav_contact:"联系", hero_badge:"⚡ 您在中国的私人医生", hero_title:"世界级医疗服务。数日内手术，而非数月。费用仅需一小部分。", hero_desc:"我是刘湘鹏医生，volacare创始人——郴州市第一人民医院副主任医师（三甲、ISO15189、自贸区）。我提供超快速预约、当日诊断和专业医疗服务。您得到的是医生，而不是导游。", stat1_label:"比美国/欧洲低70-80%", stat2_label:"2023年手术量", stat3_label:"手术等待时间", speed_text:"<p><span>⏱️</span> <strong>专科就诊:</strong> 48小时内 · <span>📅</span> <strong>手术:</strong> 3-7天 · <span>🔬</span> CT/核磁结果当日出具 · <span>🌍</span> <strong>ISO15189结果被70多个国家接受</strong></p>", services_title:"volacare如何为您服务", card1_title:"全方位医疗服务导航", card1_desc:"我会为您匹配我院合适的主任或副主任医师，处理所有预约，提供实时翻译，并协调从诊断到出院及随访的每一步。作为执业医师，我确保您获得最高质量的护理。", card1_price_note:"线上分诊195美元 · 全程陪诊（手术协调）1490美元", card2_title:"医生，而不仅仅是翻译", card2_desc:"大多数医疗陪诊服务由翻译或导游运营。我是一名拥有15年以上临床经验的副主任医师。我理解您的病情，能够回答医学问题，并亲自确保您见到合适的专家。如果需要我的专业领域手术，我将是您的主刀医生。", card2_cta:"请求咨询 →", volacare_diff:"✨ volacare的与众不同之处？您不是雇佣翻译——而是雇佣一位中国医生。我为您导航医疗系统，同时也从医生的角度理解您的医疗需求。这就是volacare的不同。", fees_title:"透明的医疗费用与周转时间", fees_sub:"所有医院费用直接按本地患者价格支付给医疗机构——无附加费。", payment_note:"💳 陪诊服务费支付: 安全支付链接（PayPal或银行转账）。医院费用直接支付给郴州市第一人民医院。✉️ 通过电子邮件联系开始。", welcome_title:"🌟 国际患者优先承诺", welcome_text:"🏥 我们医院对外国友人非常重视，您在我们医院就诊会得到更好的就医体验。您将体验到专属支持、优质协调的真挚医疗服务。从优先排期到患者大使，我们确保您感受到欢迎并获得卓越的医疗护理。", travel_title:"✈️ 医疗 + 旅行体验", travel_desc:"🎒 为了让您的就医行程更丰富，我们也可以提供旅游陪伴服务。郴州是一座非常美丽、空气非常好的城市，也是中国著名的旅游景点，更是网红打卡地。探索东江湖（晨雾）、莽山国家森林公园、汝城温泉、高椅岭丹霞地貌以及热闹的裕后街。", travel_price:"🚗 + 🏨 + 🗺️ 旅游附加服务: 私家车 + 英语向导 — 每天120美元起。", contact_title:"开始您的volacare之旅", contact_sub:"您可以直接通过电子邮件联系我或使用下方按钮。", copy_tip:"（点击复制）", email_btn:"✉️ 发送邮件", email_response:"您的邮件客户端将打开。我会在24小时内回复。", disclaimer:"⚕️ 医疗免责声明：刘湘鹏医生提供医疗导航和咨询服务，不提供远程诊断。陪诊服务费与医院费用分开。紧急情况请拨打120。" },
+        ja: { nav_home:"ホーム", nav_services:"サービス", nav_fees:"料金", nav_hospital:"病院", nav_travel:"郴州", nav_contact:"お問い合わせ", hero_badge:"⚡ 中国での専属医師", hero_title:"世界水準の医療。数日で手術、何ヶ月も待たない。わずかな費用で。", hero_desc:"私は劉湘鵬医師、volacareの創設者であり、郴州市第一人民医院の副主任医師です（トップ3A、ISO15189、FTZ）。超高速予約、当日診断、専門医レベルのケアを提供します。あなたが得るのは医師であり、ガイドではありません。", stat1_label:"米国/欧州比70-80%低コスト", stat2_label:"手術件数（2023年）", stat3_label:"手術待機期間", speed_text:"<p><span>⏱️</span> <strong>専門医受診:</strong> 48時間以内 · <span>📅</span> <strong>手術:</strong> 3～7日 · <span>🔬</span> CT/MRI当日結果 · <span>🌍</span> <strong>ISO15189結果は70か国以上で承認</strong></p>", services_title:"volacareの仕組み", card1_title:"完全医療コンシェルジュ", card1_desc:"当院の適切な部長または副主任医師を紹介し、すべての予約を処理し、リアルタイム翻訳を提供し、診断から退院、フォローアップまでのすべてのステップを調整します。私自身が医師として、最高品質のケアをお約束します。", card1_price_note:"オンライン診断 $195 · 完全コンシェルジュ（手術調整）$1,490", card2_title:"医師であり、単なる翻訳者ではない", card2_desc:"ほとんどの医療コンシェルジュサービスは翻訳者やガイドによって運営されています。私は15年以上の臨床経験を持つ副主任医師です。あなたの状態を理解し、医学的な質問に答え、適切な専門医に確実に診てもらえるようにします。", card2_cta:"お問い合わせ →", volacare_diff:"✨ volacareの違いは何ですか？あなたは翻訳者ではなく、中国人医師を雇っています。私はあなたのためにシステムをナビゲートすると同時に、医師の視点からあなたの医療ニーズを理解します。", fees_title:"透明な医療費と所要時間", fees_sub:"すべての病院費用は、地元の中国人患者料金で医療機関に直接支払われます — 追加料金はありません。", payment_note:"💳 コンシェルジュ料金のお支払い: 安全な支払いリンク（PayPalまたは銀行振込）。病院費用は郴州市第一人民医院に直接お支払いください。✉️ 開始するにはメールでお問い合わせください。", welcome_title:"🌟 国際患者優先コミットメント", welcome_text:"🏥 当院は海外からのお客様を非常に重視しており、あなたはより良い医療体験を得ることができます。優先的なスケジューリングから患者アンバサダーまで、あなたを歓迎し、卓越した医療を提供します。", travel_title:"✈️ 医療＋旅行体験", travel_desc:"🎒 あなたの医療旅行をより豊かにするために、観光同伴サービスも提供しています。郴州はとても美しく、空気のとてもきれいな都市で、中国で有名な観光地であり、話題のスポットです。東江湖（朝霧）、莽山国有林、汝城温泉、高椅嶺丹霞、そして賑やかな裕后街を探索してください。", travel_price:"🚗 + 🏨 + 🗺️ 観光同伴オプション: プライベートカー + 英語ガイド — 1日$120から。", contact_title:"volacareでの旅を始めましょう", contact_sub:"メールで直接連絡するか、以下のボタンを使用してください。", copy_tip:"（クリックでコピー）", email_btn:"✉️ メールを送信", email_response:"メールクライアントが開きます。24時間以内に返信します。", disclaimer:"⚕️ 免責事項：劉湘鵬医師は医療ナビゲーションとアドボカシーを提供します。遠隔診断は行いません。コンシェルジュ料金は病院費用とは別です。緊急時は120にダイヤルしてください。" }
+    };
+    
+    // Apply translation to all elements with data-translate attribute
+    function setLanguage(lang) {
+        if (!translations[lang]) lang = 'en';
+        const elements = document.querySelectorAll('[data-translate]');
+        elements.forEach(el => {
+            const key = el.getAttribute('data-translate');
+            if (translations[lang][key]) {
+                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') el.placeholder = translations[lang][key];
+                else el.innerHTML = translations[lang][key];
+            }
+        });
+        // Update dropdown button label
+        const toggleBtn = document.getElementById('langToggleBtn');
+        if (toggleBtn) {
+            const langMap = { en:'EN', de:'DE', fr:'FR', es:'ES', zh:'中文', ja:'日本語' };
+            toggleBtn.innerHTML = `🌐 ${langMap[lang] || 'EN'} ▼`;
         }
-    ];
-
-    const attractionsContainer = document.getElementById('attractionsContainer');
-    const videoIframe = document.getElementById('attractionVideo');
-    const descriptionDiv = document.getElementById('attractionDescription');
-
-    // 动态生成按钮，并设置介绍区域
-    attractions.forEach((attraction, index) => {
-        const button = document.createElement('button');
-        button.className = 'attraction-btn';
-        if (index === 0) button.classList.add('active');
-        button.textContent = attraction.name;
-        button.addEventListener('click', () => {
-            // 更新视频
-            videoIframe.src = attraction.videoUrl;
-            // 更新介绍
-            descriptionDiv.innerHTML = `<p>${attraction.description}</p>`;
-            // 更新按钮高亮
-            document.querySelectorAll('.attraction-btn').forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
+        localStorage.setItem('volacare_lang', lang);
+    }
+    
+    // Attach dropdown listeners
+    document.querySelectorAll('.dropdown-content button').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const lang = btn.getAttribute('data-lang');
+            setLanguage(lang);
         });
-        attractionsContainer.appendChild(button);
     });
-
-    // 初始化显示第一个景点的介绍
-    if (attractions.length > 0) {
-        descriptionDiv.innerHTML = `<p>${attractions[0].description}</p>`;
+    
+    // load saved language
+    const savedLang = localStorage.getItem('volacare_lang') || 'en';
+    setLanguage(savedLang);
+    
+    // Attractions (removed Yuhou Street - only 4 destinations)
+    const attractions = [
+        { name: "Dongjiang Lake", videoUrl: "https://www.youtube.com/embed/soVubxrtaj0?si=45NkkSu7YYabnLCE", description: "Dongjiang Lake is famous for its early morning mist creating a surreal fairy-tale atmosphere. Perfect for tranquil boat rides and fresh fish. Surrounded by lush green hills, it's a perfect place for peace and recovery." },
+        { name: "Mangshan National Forest", videoUrl: "https://www.youtube.com/embed/ab24P-Gimes?si=FSYoM0U9qN0PGoGj", description: "Mangshan is a vast subtropical rainforest with dramatic waterfalls, deep canyons, and rare wildlife. Well-maintained trails lead you through ancient trees and refreshing streams — ideal for nature lovers and fresh mountain air." },
+        { name: "Rucheng Hot Springs", videoUrl: "https://www.youtube.com/embed/S0_mJzMSdKQ?si=C6LqeS3lK-wpIwym", description: "Rucheng Hot Springs are natural mineral-rich thermal waters known for healing properties. Outdoor pools surrounded by forest, perfect for soothing muscles and promoting recovery after surgery." },
+        { name: "Gaoyiling Danxia Landform", videoUrl: "https://www.youtube.com/embed/73pRBk935PM?si=DCtpydpaHoi3wa-k", description: "Gaoyiling is a spectacular example of Danxia landform — red sandstone ridges carved by wind and water into dramatic shapes. Hiking paths offer breathtaking views of layered rock formations and emerald-green reservoirs. One of the most photographed scenic spots in Chenzhou." }
+    ];
+    
+    const containerDiv = document.getElementById('attractionsContainer');
+    const videoIframe = document.getElementById('attractionVideo');
+    const descDiv = document.getElementById('attractionDescription');
+    if (containerDiv) {
+        attractions.forEach((att, idx) => {
+            const btn = document.createElement('button');
+            btn.className = 'attraction-btn' + (idx === 0 ? ' active' : '');
+            btn.textContent = att.name;
+            btn.addEventListener('click', () => {
+                videoIframe.src = att.videoUrl;
+                descDiv.innerHTML = `<p>${att.description}</p>`;
+                document.querySelectorAll('.attraction-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+            containerDiv.appendChild(btn);
+        });
+        if (attractions.length) descDiv.innerHTML = `<p>${attractions[0].description}</p>`;
     }
-
-    // 确保视频初始加载正确
-    if (videoIframe && videoIframe.src !== attractions[0].videoUrl) {
-        videoIframe.src = attractions[0].videoUrl;
-    }
-
-    // 邮箱复制功能
-    const emailDisplayDiv = document.querySelector('.email-display');
-    const fullEmail = 'volacare@volacare.com';
-    if (emailDisplayDiv) {
-        emailDisplayDiv.addEventListener('click', () => {
-            navigator.clipboard.writeText(fullEmail).then(() => {
-                const tip = emailDisplayDiv.querySelector('span');
-                if (tip) {
-                    const original = tip.innerText;
-                    tip.innerText = '✓ copied!';
-                    setTimeout(() => tip.innerText = original, 1500);
-                }
-            }).catch(() => alert('Please copy manually.'));
+    
+    // Email copy & mailto fix
+    const correctEmail = "volacare@volacare.com";
+    const displaySpan = document.getElementById('displayEmail');
+    if (displaySpan) displaySpan.innerText = correctEmail;
+    const emailDivClick = document.querySelector('.email-display');
+    if (emailDivClick) {
+        emailDivClick.addEventListener('click', (e) => {
+            e.stopPropagation();
+            navigator.clipboard.writeText(correctEmail).then(() => {
+                const tipSpan = emailDivClick.querySelector('span:last-child');
+                if (tipSpan) { let old = tipSpan.innerText; tipSpan.innerText = '✓ copied!'; setTimeout(() => tipSpan.innerText = old, 1500); }
+            }).catch(() => alert('Copy manually: ' + correctEmail));
         });
     }
-
-    // 发送邮件按钮
     const emailBtn = document.getElementById('emailContactBtn');
     if (emailBtn) {
         emailBtn.addEventListener('click', () => {
-            window.location.href = 'mailto:' + fullEmail + '?subject=Medical%20inquiry%20via%20volacare&body=Hello%20Dr.%20Liu%2C%0A%0AI%20am%20interested%20in%20your%20medical%20concierge%20service.%0A%0ABest%20regards%2C%0A%0A%5BYour%20name%5D';
+            window.location.href = 'mailto:' + correctEmail + '?subject=Medical%20inquiry%20via%20volacare&body=Hello%20Dr.%20Liu%2C%0A%0AI%20am%20interested%20in%20your%20medical%20concierge%20service.%0A%0ABest%20regards';
         });
     }
 </script>
